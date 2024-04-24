@@ -2,7 +2,6 @@ import requests
 import re
 import time
 from bs4 import BeautifulSoup as bs
-import urllib.parse 
 
 url = 'https://catalogo.fiereparma.it/manifestazione/cibus-2024/'
 descriptions = []
@@ -22,8 +21,6 @@ def get_product_mail(url):
             
 response = requests.get(url)
 soup = bs(response.content, 'lxml')
-#products = soup.find_all('div', class_='product')
-#print (str(soup.encode("utf-8")))
 products = soup.find_all('h4')
 url_dic = {}
 
@@ -41,7 +38,18 @@ for product in products:
 for key in url_dic:
         print(key)
         mail = get_product_mail(url_dic[key])
+        count = 0
+        ts = 30
         while mail == None:
-            time.sleep(60)
+            count += 1
+            time.sleep(ts)
             mail = get_product_mail(url_dic[key])
+            if count == 2:
+                ts = 60
+            if count == 3:
+                ts = 120
+            if count == 4:
+                mail = 'Not found/case 1'
+        if mail == '':
+            mail = 'Not found/case 2'
         print(mail)
