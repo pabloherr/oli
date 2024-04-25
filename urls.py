@@ -32,7 +32,7 @@ soup = bs(response.content, 'lxml')
 products = soup.find_all('h4')
 url_dic = {}
 a = 2
-for i in range(1, 3):#1, 100
+for i in range(1, 100):#1, 100
     elements = driver.find_elements(By.TAG_NAME, 'h4')
     b = 1
     for element in elements:

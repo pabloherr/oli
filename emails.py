@@ -57,6 +57,6 @@ for key in url_dic:
         df_old = pd.read_excel('output.xlsx')
     df = pd.DataFrame({'Name': name, 
                     'Mail': email})
-if old_exl == 'y':
-    df = pd.concat([df_old, df])
-df.to_excel('output.xlsx', index=False)
+    if old_exl == 'y':
+        df = pd.concat([df_old, df])
+    df.to_excel('output.xlsx', index=False)
