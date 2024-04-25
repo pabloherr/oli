@@ -1,0 +1,4 @@
+{
+    "1882 SRL": "https://catalogo.fiereparma.it/azienda/universita-di-scienze-gastronomiche/1882-srl-2/?f=cibus-2024",
+    "3BEE SRL": "https://catalogo.fiereparma.it/azienda/3bee-srl/?f=cibus-2024"
+}

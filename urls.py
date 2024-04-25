@@ -2,6 +2,7 @@ import requests
 import re
 import time
 import pandas as pd
+import json
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -12,7 +13,6 @@ url = 'https://catalogo.fiereparma.it/manifestazione/cibus-2024/'
 
 driver = webdriver.Firefox()
 driver.get(url)
-descriptions = []
 
 def get_product_mail(url):
         response2 = requests.get(url)
@@ -32,7 +32,7 @@ soup = bs(response.content, 'lxml')
 products = soup.find_all('h4')
 url_dic = {}
 a = 2
-for i in range(1, 100):
+for i in range(1, 3):
     elements = driver.find_elements(By.TAG_NAME, 'h4')
     b = 1
     for element in elements:
@@ -64,28 +64,9 @@ for i in range(1, 100):
         EC.element_to_be_clickable((By.XPATH, path)))
     next_buttom.click()
 driver.quit()
-name = []
-email = []
-for key in url_dic:
-        print(key)
-        name.append(key)
-        mail = get_product_mail(url_dic[key])
-        count = 0
-        ts = 30
-        while mail == None:
-            count += 1
-            time.sleep(ts)
-            mail = get_product_mail(url_dic[key])
-            if count == 2:
-                ts = 60
-            if count == 3:
-                ts = 120
-            if count == 4:
-                mail = 'Not found/case 1'
-        if mail == '':
-            mail = 'Not found/case 2'
-        email.append(mail)
-        print(mail)
-df = pd.DataFrame({'Name': name, 
-                   'Mail': email})
-df.to_excel('output.xlsx')
+
+dic_str = json.dumps(url_dic, indent=4)
+
+# Escribir la cadena en el archivo
+with open('dic.txt', 'w') as f:
+    f.write(dic_str)
