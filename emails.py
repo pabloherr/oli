@@ -30,7 +30,7 @@ with open('dic.txt', 'r') as f:
 
 url_dic = json.loads(dic_str)
 
-
+nfc1 = {}
 name = []
 email = []
 for key in url_dic:
@@ -49,6 +49,10 @@ for key in url_dic:
             ts = 120
         if count == 4:
             mail = 'Not found/case 1'
+            nfc1[key] = url_dic[key]
+            with open('nfc1.txt', 'w') as f:
+                f.write(json.dumps(nfc1))
+        
     if mail == '':
         mail = 'Not found/case 2'
     email.append(mail)
