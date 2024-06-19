@@ -1,1 +1,1 @@
-{"ACCADEMIA DEL PANE": "https://catalogo.fiereparma.it/azienda/petra-srl/accademia-del-pane/?f=cibus-2024"}
+{"ACETAIA CASTELLI": "https://catalogo.fiereparma.it/azienda/azienda-agricola-iotti-danilo/acetaia-castelli-2/?f=cibus-2024", "AIA USA LLC": "https://catalogo.fiereparma.it/azienda/aia-spa/aia-usa-llc/?f=cibus-2024"}
